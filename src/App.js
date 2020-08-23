@@ -38,9 +38,12 @@ class App extends Component {
     const item = {
       ...this.state.items[index],
     };
-    this.setState({
-      items: this.state.items.filter((itemA) => itemA.id !== item.id),
+    this.setState((prevState, props) => {
+      return {
+        items: prevState.items.filter((itemA) => itemA.id !== item.id),
+      };
     });
+    console.log(this.state.items.length);
     return item;
   }
 
